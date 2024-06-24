@@ -10,6 +10,11 @@ class CalculateBtn(ttk.Button):
     self.pack(expand=True, fill="x", padx=10, pady=10)
     
   def calculate(self):
+    if self.validate() is False: return
+    file_path = self.master.select_file()
+    print(file_path)
+    
+  def validate(self):
     file_path = self.master.select_file()
     if file_path is None:
       Messagebox.show_error(
@@ -17,5 +22,6 @@ class CalculateBtn(ttk.Button):
         message="No se ha seleccionado ninguna imagen",
         buttons=["Aceptar:primary"]
       )
-      return
+      return False
+    return True
     
