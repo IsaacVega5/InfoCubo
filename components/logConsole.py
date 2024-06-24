@@ -21,4 +21,7 @@ class LogConsole(ttk.Frame):
     self.console.text.configure(state="disabled")
     
   def clear(self):
+    self.console.text.configure(state="normal")
     self.console.delete("1.0", END)
+    self.console.text.configure(state="disabled")
+    
