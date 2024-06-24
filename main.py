@@ -1,6 +1,7 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 import components as comp
+from ttkbootstrap.scrolled import ScrolledText
 
 
 root = ttk.Window( title="InfoCubo", iconphoto = './assets/cube.png', themename="infocubo")
@@ -26,6 +27,8 @@ class Main(ttk.Frame):
                                        placeholder="c:/ruta/a/imagen")
     
     self.btn_calc = comp.CalculateBtn(self)
+    
+    self.log_text = comp.LogConsole(self)
   
 if __name__ == "__main__":
   app = Main(root)

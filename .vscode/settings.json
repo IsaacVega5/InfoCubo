@@ -5,6 +5,7 @@
     "padx",
     "pady",
     "themename",
-    "ttkbootstrap"
+    "ttkbootstrap",
+    "vbar"
   ]
 }

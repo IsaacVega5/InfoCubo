@@ -12,7 +12,9 @@ class CalculateBtn(ttk.Button):
   def calculate(self):
     if self.validate() is False: return
     file_path = self.master.select_file()
-    print(file_path)
+    console = self.master.log_text
+    console.write(file_path)
+    # print(file_path)
     
   def validate(self):
     file_path = self.master.select_file()
@@ -24,4 +26,3 @@ class CalculateBtn(ttk.Button):
       )
       return False
     return True
-    
