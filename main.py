@@ -26,6 +26,8 @@ class Main(ttk.Frame):
                                        title="Seleccionar imagen", 
                                        placeholder="c:/ruta/a/imagen")
     
+    self.indices = comp.IndicesSelect(self)
+    
     self.btn_calc = comp.CalculateBtn(self)
     
     self.log_text = comp.LogConsole(self)
