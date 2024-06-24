@@ -26,9 +26,6 @@ class Main(ttk.Frame):
                                        placeholder="c:/ruta/a/imagen")
     
     self.btn_calc = comp.CalculateBtn(self)
-
-  def calculate(self):
-    pass
   
 if __name__ == "__main__":
   app = Main(root)
