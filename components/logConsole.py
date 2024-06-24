@@ -9,7 +9,7 @@ class LogConsole(ttk.Frame):
     self.create_widgets()
   
   def create_widgets(self):
-    self.console = ScrolledText(self, state="disabled", font=("Consolas", 10), height=10, vbar=False, width=50)
+    self.console = ScrolledText(self, state="disabled", font=("Consolas", 10), height=5, vbar=False, width=50)
     self.console.pack(expand=True, fill="both")
     
   
