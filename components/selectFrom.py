@@ -6,7 +6,6 @@ from ttkbootstrap.constants import *
 class SelectFrom(ttk.Frame):
   def __init__(self, parent, 
                placeholder = "No hay archivos seleccionados.",
-               type = "file",
                title = "Seleccionar archivo",
                ):
     
