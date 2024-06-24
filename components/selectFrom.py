@@ -36,7 +36,7 @@ class SelectFrom(ttk.Frame):
     return self.path
   
   def select_from(self):
-    file_path = askopenfilename()
+    file_path = askopenfilename(title=self.title)
     if file_path == "" or file_path is None: return
     
     self.path_entry.configure(state="normal")
