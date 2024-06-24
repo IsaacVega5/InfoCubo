@@ -29,6 +29,10 @@ class Main(ttk.Frame):
     self.btn_calc = comp.CalculateBtn(self)
     
     self.log_text = comp.LogConsole(self)
+    
+    self.progress = ttk.Progressbar(self)
+    self.progress.config(length=100, value=0)
+    self.progress.pack(expand=True, fill="x", padx=10, pady=(0,10))
   
 if __name__ == "__main__":
   app = Main(root)
