@@ -3,22 +3,21 @@ from tkinter.filedialog import askopenfilename
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 
-class SelectFrom(ttk.Frame):
+class SelectFrom(ttk.LabelFrame):
   def __init__(self, parent, 
                placeholder = "No hay archivos seleccionados.",
                title = "Seleccionar archivo",
                ):
     
     super().__init__(parent, padding=10)
-    self.pack(fill=ttk.BOTH, expand=True)
+    self.pack(fill=ttk.BOTH, expand=True, padx=10, pady=10)
+    self.config(text=f' {title} ')
     self.title = title
+    
     self.path = None
     self.create_widgets(placeholder)
   
   def create_widgets(self, placeholder):
-    self.title_label = ttk.Label(self, text=self.title)
-    self.title_label.grid(row=0, column=0, columnspan=2, sticky=EW)
-    
     self.path_entry = ttk.Entry(self, width=50)
     self.path_entry.insert(0, placeholder)
     self.path_entry.configure(state="readonly")
