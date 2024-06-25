@@ -13,11 +13,13 @@ class Process:
   def __init__(self, file_path):
     self.file_path = file_path
     self.hdr_file = remove_name_from_path(file_path) + get_name_from_path(file_path) + ".hdr"
+    self.raw_img = envi.open(self.hdr_file, self.file_path)
   
+  def __call__(self):
+    return self.raw_img
+    
   def load_image(self):
-    raw_img = envi.open(self.hdr_file, self.file_path)
-    raw_data = np.array(raw_img.load())
-    del raw_img
+    raw_data = np.array(self.raw_img.load())
     self.raw_data = raw_data
     return self
   
@@ -132,3 +134,9 @@ class Process:
       cri_2.save(folder + "/" + get_name_from_path(file_path) + "_cri_2.tif")
     
     return folder
+  
+  def context_process (self, indices, bar = None):
+    with envi.open(self.hdr_file, self.file_path) as raw_img:
+      print(raw_img[0][0])
+      
+      
