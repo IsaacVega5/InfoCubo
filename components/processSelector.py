@@ -30,7 +30,7 @@ class ProcessSelector(ttk.LabelFrame):
     self.selector["menu"] = self.menu
     for x in range(len(values)):
       option = self.menu.add_cascade(label=values[x][0], command= lambda x=x: self.on_option(x))
-    self.tooltip = ToolTip(self.selector, text=values[x][1], bootstyle="light")
+    self.tooltip = ToolTip(self.selector, text=values[0][1], bootstyle="light")
 
   def on_option(self, index):
     self.selector.configure(text=PROCESS_METHODS[index][0])
