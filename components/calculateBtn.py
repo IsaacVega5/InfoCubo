@@ -20,7 +20,7 @@ class CalculateBtn(ttk.Button):
     file_path = self.master.select_file()
     if file_path is None:
       Messagebox.show_error(
-        parent=self.master, 
+        parent=self.master.master, 
         message="No se ha seleccionado ninguna imagen",
         buttons=["Aceptar:primary"]
       )
@@ -33,6 +33,7 @@ class CalculateBtn(ttk.Button):
     return out
   
   def on_click(self):
+    if self.validate() is False: return
     try:
       self.thread.cancel()
     except:
@@ -41,7 +42,6 @@ class CalculateBtn(ttk.Button):
     self.thread.start()
     
   def calculate(self):
-    if self.validate() is False: return
     output_path = self.output()
     if output_path is None: return
     file_path = self.master.select_file()
