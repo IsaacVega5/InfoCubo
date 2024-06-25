@@ -17,3 +17,5 @@ BANDAS = {
   'r_900': R_900,
   'r_950': R_950
 }
+
+PROCESS_METHODS = ['RAM', 'Directo']

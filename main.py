@@ -27,6 +27,7 @@ class Main(ttk.Frame):
                                        placeholder="c:/ruta/a/imagen")
     
     self.indices = comp.IndicesSelect(self)
+    self.processSelect = comp.ProcessSelector(self)
     
     self.btn_calc = comp.CalculateBtn(self)
     
