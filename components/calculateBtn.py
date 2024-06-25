@@ -3,7 +3,7 @@ from tkinter.filedialog import askdirectory
 from ttkbootstrap.constants import *
 from ttkbootstrap.dialogs import Messagebox
 import threading
-import os
+import time
 
 from classes.Process import Process
 
@@ -48,8 +48,8 @@ class CalculateBtn(ttk.Button):
     console = self.master.log_text
     progress = self.master.progress
     process_method = self.master.processSelect()
-    
     indices = self.master.indices()
+    init_time = time.time()
     
     console.clear()
     console.write("Cargando imagen...")
@@ -70,8 +70,10 @@ class CalculateBtn(ttk.Button):
       process.context_process(indices, progress)
     
     saved_folder = process.save(output_path, indices)
-    console.write("Índices calculados ✅ \n")
-    console.write(f"Guardando resultados en {saved_folder}")
+    
+    finish_time = time.time()
+    console.write(f"Índices calculados en {round(finish_time - init_time, 2)}seg. \n")
+    console.write(f"Guardando resultados en:\n{saved_folder}")
     
   
   
