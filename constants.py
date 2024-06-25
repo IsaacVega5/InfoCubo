@@ -18,4 +18,7 @@ BANDAS = {
   'r_950': R_950
 }
 
-PROCESS_METHODS = ['RAM', 'Directo']
+PROCESS_METHODS = [
+  ['RAM', 'Guarda la imagen en memoria RAM, por lo que consume más recursos, pero es más rápido'],
+  ['Directo', 'No guarda la imagen en memoria RAM, es más lento, pero consume menos recursos']
+]

@@ -1,5 +1,6 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
+from ttkbootstrap.tooltip import ToolTip
 
 from constants import PROCESS_METHODS
 
@@ -20,7 +21,7 @@ class ProcessSelector(ttk.LabelFrame):
     values = PROCESS_METHODS
     self.selector = ttk.Menubutton(self,
                                    bootstyle="primary",
-                                   text=values[0],
+                                   text=values[0][0],
                                    width=10
                                   )
     self.selector.pack(side=ttk.RIGHT, padx=5, pady=5)
@@ -28,8 +29,11 @@ class ProcessSelector(ttk.LabelFrame):
     self.menu = ttk.Menu(self.selector)
     self.selector["menu"] = self.menu
     for x in range(len(values)):
-      self.menu.add_cascade(label=values[x], command= lambda x=x: self.on_option(x))
+      option = self.menu.add_cascade(label=values[x][0], command= lambda x=x: self.on_option(x))
+    self.tooltip = ToolTip(self.selector, text=values[x][1], bootstyle="light")
 
   def on_option(self, index):
-    self.selector.configure(text=PROCESS_METHODS[index])
+    self.selector.configure(text=PROCESS_METHODS[index][0])
     self.process_method = index
+    self.tooltip = ToolTip(self.selector, text=PROCESS_METHODS[index][1], bootstyle="light")
+    

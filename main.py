@@ -24,7 +24,7 @@ class Main(ttk.Frame):
     
     self.select_file = comp.SelectFrom(self, 
                                        title="Seleccionar imagen", 
-                                       placeholder="c:/ruta/a/imagen")
+                                       placeholder="Ruta a la imagen")
     
     self.indices = comp.IndicesSelect(self)
     self.processSelect = comp.ProcessSelector(self)
