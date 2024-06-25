@@ -92,8 +92,9 @@ class Process:
       if bar is not None:
         bar.step(1)
 
-  def save (self, file_path, indices):
-    folder = file_path + "/results_" + get_name_from_path(file_path)
+  def save (self, output_path, indices):
+    file_path = self.file_path
+    folder = output_path + "/results_" + get_name_from_path(file_path)
     if not os.path.exists(folder):
       os.makedirs(folder)
     
