@@ -24,7 +24,7 @@ class Process:
     return self
   
   def shape(self):
-    shape = self.raw_data.shape
+    shape = self.raw_img.shape
     return shape
   
   def set_indices (self, indices, shape):
@@ -136,7 +136,47 @@ class Process:
     return folder
   
   def context_process (self, indices, bar = None):
-    with envi.open(self.hdr_file, self.file_path) as raw_img:
-      print(raw_img[0][0])
-      
-      
+    self.set_indices(indices, self.shape())
+    
+    for i in range(self.shape()[0]):
+      for j in range(self.shape()[1]):
+        # Bandas
+        r_450 = self.raw_img[i,j][BANDAS['r_450']]
+        r_550 = self.raw_img[i,j][BANDAS['r_550']]
+        r_570 = self.raw_img[i,j][BANDAS['r_570']]
+        r_670 = self.raw_img[i,j][BANDAS['r_670']]
+        r_700 = self.raw_img[i,j][BANDAS['r_700']]
+        r_840 = self.raw_img[i,j][BANDAS['r_840']]
+        r_900 = self.raw_img[i,j][BANDAS['r_900']]
+        r_950 = self.raw_img[i,j][BANDAS['r_950']]
+        
+        if indices['ndvi'] == 1:
+          self.ndvi_img[i][j] = (r_840 - r_670) / (r_840 + r_670)
+
+        if indices['pri'] == 1:
+          self.pri_img[i][j] = (r_550 - r_570) / (r_550 + r_570)
+
+        if indices['savi'] == 1:
+          self.savi_img[i][j] = ((r_840 - r_670) / (r_840 + r_670 + 0.5)) * (1 + 0.5)
+
+        if indices['mcari'] == 1:
+          self.mcari_img[i][j] = ((r_700 - r_670) - (0.2 * (r_700 - r_550))) * (r_700 / r_670)
+
+        if indices['wbi'] == 1:
+          self.wbi_img[i][j] = r_900 / r_950 if r_950 != 0 else 0
+
+        if indices['rdvi'] == 1:
+          self.rdvi_img[i][j] = (r_840 - r_670) / math.sqrt(r_840 + r_670)
+
+        if indices['evi'] == 1:
+          self.evi_img[i][j] = 2.5 * ( (r_840 - r_670) / r_840 + 6 * r_670 - 7.5 * r_450 + 1)
+
+        if indices['ari_2'] == 1:
+          self.ari_2_img[i][j] = r_840 * ((1 / r_550) - ( 1 / r_700))
+          
+        if indices['cri_2'] == 1:
+          self.cri_2_img[i][j] = (1 / r_550) - (1 / r_700)
+          
+      if bar is not None:
+        bar.step(1)  
+        

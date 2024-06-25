@@ -56,15 +56,13 @@ class CalculateBtn(ttk.Button):
     progress.start()
     
     process = Process(file_path)
-    process.context_process(indices)
-    
-    process.load_image()
+    # process.load_image()
     
     progress.stop()
     progress.config(mode = "determinate", maximum = process.shape()[0], value = 0)
     console.write("Calculando índices...")
     
-    process.ram_process(indices, progress)
+    process.context_process(indices, progress)
     saved_folder = process.save(output_path, indices)
     console.write("Índices calculados ✅ \n")
     console.write(f"Guardando resultados en {saved_folder}")
