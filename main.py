@@ -1,8 +1,6 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 import components as comp
-from ttkbootstrap.scrolled import ScrolledText
-
 
 root = ttk.Window( title="InfoCubo", iconphoto = './assets/cube.png', themename="infocubo")
 root.iconphoto = './assets/cube.png'
