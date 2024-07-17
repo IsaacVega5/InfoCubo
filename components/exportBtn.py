@@ -60,9 +60,21 @@ class ExportBtn(ttk.Button):
   
   def export_channels(self,filepath, output_path):
     min, max = self.master.process_nb.bandas()
+    console = self.master.log_text
+    init_time = time.time()
+    
+    console.clear()
+    console.write("Exportando bandas...")
     
     img = Process(filepath)
-    img.export_channels(output_path, channels=(min, max))
+    progress = self.master.progress
+    progress.config(mode = "determinate", maximum = img.shape()[2], value = 0)
+    
+    path = img.export_channels(output_path, channels=(min, max), bar = progress)
+    finish_time = time.time()
+    
+    console.write(f"Bandas exportadas en {round(finish_time - init_time, 2)}seg. \n")
+    console.write(f"Guardando resultados en:\n{path}")
   
   def calculate(self, filepath, output_path):
     console = self.master.log_text

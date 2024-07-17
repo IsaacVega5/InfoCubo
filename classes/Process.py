@@ -181,8 +181,8 @@ class Process:
       if bar is not None:
         bar.step(1)  
 
-  def export_channels(self, folder, channels= (0, 273)):
-    folder = os.path.join(folder, "channels")
+  def export_channels(self, folder, channels= (0, 273), bar = None):  
+    folder = folder + "/channels" 
     if not os.path.exists(folder):
       os.makedirs(folder)
     
@@ -190,4 +190,9 @@ class Process:
       if i < channels[0] or i > channels[1]: continue
       banda = self.raw_img.read_band(i)
       banda = Image.fromarray(banda)
-      banda.save(f'{folder}/channel_{format_number(i)}_{CHANNELS_DIRECT[i]}.tif')
+      banda.save(f'{folder}/channel_{format_number(i+1)}_{CHANNELS_DIRECT[i]}.tif')
+      
+      if bar is not None:
+        bar.step(1)
+    
+    return folder
