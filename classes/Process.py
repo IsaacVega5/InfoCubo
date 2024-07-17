@@ -5,9 +5,9 @@ import numpy as np
 import math
 import os
 
-from utils import get_name_from_path, remove_name_from_path
+from utils import get_name_from_path, remove_name_from_path, format_number
 
-from constants import BANDAS
+from constants import BANDAS, CHANNELS_DIRECT
 
 class Process:
   def __init__(self, file_path):
@@ -190,4 +190,4 @@ class Process:
       if i < channels[0] or i > channels[1]: continue
       banda = self.raw_img.read_band(i)
       banda = Image.fromarray(banda)
-      banda.save(f'{folder}/channel_{i}.tif')
+      banda.save(f'{folder}/channel_{format_number(i)}_{CHANNELS_DIRECT[i]}.tif')

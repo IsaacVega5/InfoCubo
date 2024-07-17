@@ -11,3 +11,6 @@ def remove_name_from_path(path):
   name = get_full_name_from_path(path)
   new_path = path.replace(name, "")
   return new_path
+
+def format_number(number, cifra = 3):
+  return str(number).zfill(cifra)
