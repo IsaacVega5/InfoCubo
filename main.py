@@ -19,7 +19,6 @@ class Main(ttk.Frame):
     
     self.separator = ttk.Separator(self, orient=HORIZONTAL)
     self.separator.grid(row=1, column=0, sticky="ew", padx=10, pady=10)
-    # self.separator.pack(expand=True, fill="x", padx=10, pady=10)
     
     self.select_file = comp.SelectFrom(self, 
                                        title="Seleccionar imagen", 
@@ -29,7 +28,6 @@ class Main(ttk.Frame):
     self.process_nb = comp.ExportNotebook(self, action=self.on_change)
     self.process_nb.grid(row=3, column=0, sticky="ew", padx=10, pady=10)
     
-    # self.indices = comp.IndicesSelect(self)
     self.render_btn(0)
     
     self.processSelect = comp.ProcessSelector(self)
@@ -42,7 +40,6 @@ class Main(ttk.Frame):
     self.progress = ttk.Progressbar(self, style="success.Horizontal.TProgressbar")
     self.progress.config(length=100, value=0)
     self.progress.grid(row=7, column=0, sticky="ew", padx=10, pady=(0,10))
-    # self.progress.pack(expand=True, fill="x", padx=10, pady=(0,10))
   
   def export(self):
     filepath = self.select_file()
