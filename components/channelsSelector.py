@@ -1,3 +1,4 @@
+from typing import Any
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 
@@ -6,7 +7,13 @@ class ChannelSelector(ttk.Frame):
     super().__init__(parent)
     self.action = action
     self.create_widgets()
+  
+  def __call__(self):
+    min = int(self.min_entry.get())
+    max = int(self.max_entry.get())
     
+    return (min, max)
+  
   def create_widgets(self):
     self.min_label = ttk.Label(self, text="Rango de bandas:")
     self.min_label.pack(side=ttk.LEFT, padx=5, pady=5)

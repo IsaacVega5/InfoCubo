@@ -17,10 +17,19 @@ class ExportBtn(ttk.Button):
     
   def validate(self):
     file_path = self.master.select_file()
+    min, max = self.master.process_nb.bandas()
     if file_path is None:
       Messagebox.show_error(
         parent=self.master.master, 
         message="No se ha seleccionado ninguna imagen",
+        buttons=["Aceptar:primary"]
+      )
+      return False
+    
+    if self.action == 'export' and min >= max or min < 0 or min > 273 or max < 0 or max > 273: 
+      Messagebox.show_error(
+        parent=self.master.master, 
+        message="Rango de bandas inválido",
         buttons=["Aceptar:primary"]
       )
       return False
@@ -41,6 +50,7 @@ class ExportBtn(ttk.Button):
     self.thread.start()
   
   def to_export(self):
+    
     filepath = self.master.select_file()
     output_path = self.output()
     if output_path is None: return
@@ -48,9 +58,14 @@ class ExportBtn(ttk.Button):
     if self.action == 'calculate': self.calculate(filepath, output_path)
     elif self.action == 'export': self.export_channels(filepath, output_path)
   
+
+  
   def export_channels(self,filepath, output_path):
-    img = Process(filepath)
-    img.export_channels(output_path)
+    min, max = self.master.process_nb.bandas()
+    print(min, max)
+    
+    # img = Process(filepath)
+    # img.export_channels(output_path)
   
   def calculate(self, filepath, output_path):
     console = self.master.log_text
