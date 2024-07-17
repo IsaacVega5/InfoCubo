@@ -46,7 +46,7 @@ class CalculateBtn(ttk.Button):
     console = self.master.log_text
     progress = self.master.progress
     process_method = self.master.processSelect()
-    indices = self.master.indices()
+    indices = self.master.process_nb.indices()
     init_time = time.time()
     
     console.clear()

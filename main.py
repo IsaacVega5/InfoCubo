@@ -28,11 +28,10 @@ class Main(ttk.Frame):
     self.process_nb = comp.ExportNotebook(self, action=self.on_change)
     self.process_nb.grid(row=3, column=0, sticky="ew", padx=10, pady=10)
     
-    self.render_btn(0)
-    
     self.processSelect = comp.ProcessSelector(self)
-    self.processSelect.grid(row=5, column=0, sticky="ew", padx=10, pady=10)
+    self.processSelect.grid(row=4, column=0, sticky="ew", padx=10, pady=10)
     
+    self.render_btn(0)
     
     self.log_text = comp.LogConsole(self)
     self.log_text.grid(row=6, column=0, sticky="ew", padx=10, pady=(10,0))
@@ -56,7 +55,7 @@ class Main(ttk.Frame):
     elif tab == 1:
       self.btn_out = ttk.Button(self, text="Exportar índices", style="primary.TButton", command= self.export)
     
-    self.btn_out.grid(row=4, column=0, sticky="ew", padx=10, pady=10)
+    self.btn_out.grid(row=5, column=0, sticky="ew", padx=10, pady=10)
   
   def on_change(self, event):
     current_tab = self.process_nb.index("current")
