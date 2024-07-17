@@ -26,7 +26,7 @@ class ExportBtn(ttk.Button):
       )
       return False
     
-    if self.action == 'export' and min >= max or min < 0 or min > 273 or max < 0 or max > 273: 
+    if self.action == 'export' and min > max or min < 0 or min > 273 or max < 0 or max > 273: 
       Messagebox.show_error(
         parent=self.master.master, 
         message="Rango de bandas inválido",
