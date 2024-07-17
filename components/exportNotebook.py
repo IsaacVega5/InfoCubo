@@ -13,8 +13,8 @@ class ExportNotebook(ttk.Notebook):
   def create_widgets(self):
     self.indices = IndicesSelect(self)
     self.bandas = ChannelSelector(self)
-    self.add(self.bandas, text="Bandas")
     self.add(self.indices, text="Indices")
+    self.add(self.bandas, text="Bandas")
     
     if self.action is not None: self.bind("<<NotebookTabChanged>>", self.action)
   
