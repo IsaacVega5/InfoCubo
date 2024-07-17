@@ -58,14 +58,11 @@ class ExportBtn(ttk.Button):
     if self.action == 'calculate': self.calculate(filepath, output_path)
     elif self.action == 'export': self.export_channels(filepath, output_path)
   
-
-  
   def export_channels(self,filepath, output_path):
     min, max = self.master.process_nb.bandas()
-    print(min, max)
     
-    # img = Process(filepath)
-    # img.export_channels(output_path)
+    img = Process(filepath)
+    img.export_channels(output_path, channels=(min, max))
   
   def calculate(self, filepath, output_path):
     console = self.master.log_text
