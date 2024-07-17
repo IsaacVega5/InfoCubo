@@ -51,9 +51,9 @@ class Main(ttk.Frame):
   
   def render_btn (self, tab):
     if tab == 0:
-      self.btn_out = comp.CalculateBtn(self)
+      self.btn_out = comp.ExportBtn(self)
     elif tab == 1:
-      self.btn_out = ttk.Button(self, text="Exportar bandas", style="primary.TButton", command= self.export)
+      self.btn_out = comp.ExportBtn(self, text="Exportar bandas")
     
     self.btn_out.grid(row=5, column=0, sticky="ew", padx=10, pady=10)
   

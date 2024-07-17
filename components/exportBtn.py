@@ -7,8 +7,7 @@ import time
 
 from classes.Process import Process
 
-
-class CalculateBtn(ttk.Button):
+class ExportBtn(ttk.Button):
   def __init__(self, parent, 
                text="Calcular índices", 
                style="success.TButton"):
