@@ -28,7 +28,7 @@ class ExportBtn(ttk.Button):
   
   def output(self):
     out = askdirectory()
-    if out is None: return
+    if out is None or out == "": return
     return out
   
   def on_click(self):
