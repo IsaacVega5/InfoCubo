@@ -2,11 +2,11 @@ import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from tkinter import IntVar
 
-class IndicesSelect(ttk.LabelFrame):
+class IndicesSelect(ttk.Frame):
   def __init__(self, parent):
     super().__init__(parent, padding=10)
     self.pack(fill=ttk.BOTH, expand=True, padx=10, pady=0)
-    self.config(text=" Índices a calcular ")
+    # self.config(text=" Índices a calcular ")
     self.ndvi = IntVar(value=1)
     self.pri = IntVar(value=1)
     self.savi = IntVar(value=1)

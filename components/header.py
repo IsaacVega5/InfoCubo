@@ -5,7 +5,6 @@ from PIL import ImageTk, Image
 class Header(ttk.Frame):
   def __init__(self, parent):
     super().__init__(parent, padding=10)
-    self.pack(fill=ttk.BOTH, expand=True)
     self.create_widgets() 
     
   def create_widgets(self):

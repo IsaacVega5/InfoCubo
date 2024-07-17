@@ -7,7 +7,6 @@ from constants import PROCESS_METHODS
 class ProcessSelector(ttk.LabelFrame):
   def __init__(self, parent):
     super().__init__(parent, padding=10)
-    self.pack(fill=ttk.BOTH, expand=True, padx=10, pady=10)
     self.config(text=" Método de procesamiento ")
     self.process_method = 0
     self.create_widgets()

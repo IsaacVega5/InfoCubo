@@ -10,7 +10,6 @@ class SelectFrom(ttk.LabelFrame):
                ):
     
     super().__init__(parent, padding=10)
-    self.pack(fill=ttk.BOTH, expand=True, padx=10, pady=10)
     self.config(text=f' {title} ')
     self.title = title
     

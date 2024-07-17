@@ -13,8 +13,6 @@ class CalculateBtn(ttk.Button):
                text="Calcular índices", 
                style="success.TButton"):
     super().__init__(parent, text=text, style=style, command= self.on_click)
-    self.pack(expand=True, fill="x", padx=10, pady=10)
-    
     
   def validate(self):
     file_path = self.master.select_file()

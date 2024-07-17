@@ -5,7 +5,6 @@ from ttkbootstrap.scrolled import ScrolledText
 class LogConsole(ttk.Frame):
   def __init__(self, parent):
     super().__init__(parent)
-    self.pack(fill=ttk.BOTH, expand=True, padx=10, pady=(10,0))
     self.create_widgets()
   
   def create_widgets(self):
