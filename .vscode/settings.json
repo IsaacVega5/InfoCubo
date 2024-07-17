@@ -3,6 +3,7 @@
     "bootstyle",
     "columnspan",
     "envi",
+    "focusout",
     "fromarray",
     "infocubo",
     "mcari",
@@ -13,6 +14,7 @@
     "savi",
     "themename",
     "ttkbootstrap",
+    "validatecommand",
     "vbar"
   ]
 }

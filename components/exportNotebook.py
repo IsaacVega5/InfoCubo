@@ -1,6 +1,7 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from components.indicesSelect import IndicesSelect
+from components.channelsSelector import ChannelSelector
 
 class ExportNotebook(ttk.Notebook):
   def __init__(self, parent, action = None):
@@ -11,9 +12,9 @@ class ExportNotebook(ttk.Notebook):
     
   def create_widgets(self):
     self.indices = IndicesSelect(self)
-    self.bandas = ttk.Label(self, text="Exportar bandas")
-    self.add(self.indices, text="Indices")
+    self.bandas = ChannelSelector(self)
     self.add(self.bandas, text="Bandas")
+    self.add(self.indices, text="Indices")
     
     if self.action is not None: self.bind("<<NotebookTabChanged>>", self.action)
   
