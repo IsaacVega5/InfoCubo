@@ -40,29 +40,17 @@ class Main(ttk.Frame):
     self.progress.config(length=100, value=0)
     self.progress.grid(row=7, column=0, sticky="ew", padx=10, pady=(0,10))
   
-  def export(self):
-    filepath = self.select_file()
-    from classes.Process import Process
-    img = Process(filepath)
-    from tkinter.filedialog import askdirectory
-    output_path = askdirectory()
-    if output_path is None: return
-    img.export_channels(output_path)
-  
   def render_btn (self, tab):
     if tab == 0:
-      self.btn_out = comp.ExportBtn(self)
+      self.btn_out = comp.ExportBtn(self, action='calculate')
     elif tab == 1:
-      self.btn_out = comp.ExportBtn(self, text="Exportar bandas")
+      self.btn_out = comp.ExportBtn(self, text="Exportar bandas", action='export')
     
     self.btn_out.grid(row=5, column=0, sticky="ew", padx=10, pady=10)
   
   def on_change(self, event):
     current_tab = self.process_nb.index("current")
     self.render_btn(current_tab)
-    
-    self.log_text.clear()
-    self.log_text.write(current_tab)
     
   
 if __name__ == "__main__":

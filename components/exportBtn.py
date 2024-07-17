@@ -10,8 +10,10 @@ from classes.Process import Process
 class ExportBtn(ttk.Button):
   def __init__(self, parent, 
                text="Calcular índices", 
-               style="success.TButton"):
+               style="success.TButton",
+               action = 'calculate'):
     super().__init__(parent, text=text, style=style, command= self.on_click)
+    self.action = action
     
   def validate(self):
     file_path = self.master.select_file()
@@ -35,13 +37,22 @@ class ExportBtn(ttk.Button):
       self.thread.cancel()
     except:
       pass
-    self.thread = threading.Thread(target=self.calculate)
+    self.thread = threading.Thread(target=self.to_export)
     self.thread.start()
-    
-  def calculate(self):
+  
+  def to_export(self):
+    filepath = self.master.select_file()
     output_path = self.output()
     if output_path is None: return
-    file_path = self.master.select_file()
+    
+    if self.action == 'calculate': self.calculate(filepath, output_path)
+    elif self.action == 'export': self.export_channels(filepath, output_path)
+  
+  def export_channels(self,filepath, output_path):
+    img = Process(filepath)
+    img.export_channels(output_path)
+  
+  def calculate(self, filepath, output_path):
     console = self.master.log_text
     progress = self.master.progress
     process_method = self.master.processSelect()
@@ -53,7 +64,7 @@ class ExportBtn(ttk.Button):
     progress.config(mode = "indeterminate", length=100, value=0)
     progress.start()
     
-    process = Process(file_path)
+    process = Process(filepath)
     if process_method == 0:
       process.load_image()
     
