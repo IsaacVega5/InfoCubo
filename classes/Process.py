@@ -190,7 +190,7 @@ class Process:
       if i < channels[0] or i > channels[1]: continue
       banda = self.raw_img.read_band(i)
       banda = Image.fromarray(banda)
-      banda.save(f'{folder}/channel_{format_number(i)}_{CHANNELS_DIRECT[i]}.tif')
+      banda.save(f'{folder}/{format_number(i)}_{CHANNELS_DIRECT[i]}.tif')
       
       if bar is not None:
         bar.step(1)
