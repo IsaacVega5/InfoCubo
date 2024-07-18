@@ -187,7 +187,6 @@ class Process:
       os.makedirs(folder)
     
     for i in range(self.shape()[2]):
-      print(self.shape(), i)
       if i < channels[0] or i >= channels[1]: continue
       banda = self.raw_img.read_band(i)
       banda = Image.fromarray(banda)

@@ -37,7 +37,7 @@ Los valores que se obtendrán son los siguientes:
 ### Exportar bandas
 Para exportar las bandas en diferentes imágenes se deben seguir los siguientes pasos:
 1. Seleccionar la carpeta donde se encuentran la imagen.
-2. Dentro de la sección `Bandas` seleccionar el rango de bandas a exportar, se debe considerar que se empieza desde el 0 hasta el 273.
+2. Dentro de la sección `Bandas` seleccionar el rango de bandas a exportar, se debe considerar que se empieza desde el 0 hasta el 272.
 3. Hacer click en `Exportar bandas` y seleccionar la carpeta de destino de las bandas, se creará una carpeta llamada `channels` en donde estarán las bandas exportadas. Las bandas serán nombradas como `(numero de canal)_(banda a la que hace referencia).tif`.
    
 ```	
