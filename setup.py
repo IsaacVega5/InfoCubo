@@ -11,7 +11,7 @@ executables = [
 ]
 
 setup(name='InfoCubo',
-      version = '2.0',
+      version = '2.1',
       author='Isaac Vega Salgado',
       author_email='isaacvega361@gmail.com',
       description = 'InfoCubo',
