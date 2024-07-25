@@ -181,6 +181,39 @@ class Process:
       if bar is not None:
         bar.step(1)  
 
+  def direct_process(self, indices, bar = None):
+    self.set_indices(indices, self.shape())
+    
+    img = self.raw_img
+    b = BANDAS
+    
+    if indices['ndvi'] == 1:
+      self.ndvi_img = ( img[:, :, b['r_840']] - img[:, :, b['r_670']] ) / ( img[:, :, b['r_840']] + img[:, :, b['r_670']] )
+    
+    if indices['pri'] == 1:
+      self.pri_img = ( img[:,:,b['r_550']] - img[:, :, b['r_570']] ) / ( img[:,:,b['r_550']] + img[:, :, b['r_570']] )
+      
+    if indices['savi'] == 1:
+      self.savi_img = ( ( img[:,:, b['r_840']] - img[:,:, b['r_670']]) / ( img[:,:, b['r_840']] + img[:,:, b['r_670']] + 0.5) ) * (1 + 0.5)
+    
+    if indices['mcari'] == 1:
+      self.mcari_img = ( ( img[:,:, b['r_700']] - img[:,:, b['r_670']]) - (0.2 * ( img[:,:,b['r_700']] - img[:,:,b['r_550']])) ) * ( img[:,:,b['r_700']] / img[:,:,b['r_670']])
+    
+    if indices['wbi'] == 1:
+      self.wbi_img == np.where( img[:,:,b['r_950']] != 0, img[:,:,b['r_900']] / img[:,:,b['r_950']], 0)
+    
+    if indices['rdvi'] == 1:
+      self.rdvi_img = ( img[:,:,b['r_840']] - img[:,:, b['r_670']] / np.square( img[:,:,b['r_840']] + img[:,:, b['r_670']]) )
+    
+    if indices['evi'] == 1:
+      self.evi_img = 2.5 * ( ( img[:,:,'r_840'] - img[:,:,b['r_670']]) / img[:,:,'r_840'] + 6 * img[:,:,b['r_670']] - 7.5 * img[:,:,b['r_450']] + 1 )
+    
+    if indices['ari_2'] == 1:
+      self.ari_2_img = img[:,:,b['r_840']] * ( (1 / img[:,:,b['r_550']]) - (1 / img[:,:,b['r_700']]))
+    
+    if indices['cri_2'] == 1:
+      self.cri_2_img = (1 / img[:,:,b['r_550']]) - (1 / img[:,:,b['r_700']])
+    
   def export_channels(self, folder, channels= (0, 272), bar = None):  
     folder = folder + "/channels" 
     if not os.path.exists(folder):
