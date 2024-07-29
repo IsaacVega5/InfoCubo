@@ -181,7 +181,7 @@ class Process:
       if bar is not None:
         bar.step(1)  
 
-  def no_iterative_process(self, indices, bar = None):
+  def no_iterative_process(self, indices):
     self.set_indices(indices, self.shape())
     
     img = self.raw_img

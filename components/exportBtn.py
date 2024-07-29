@@ -101,7 +101,8 @@ class ExportBtn(ttk.Button):
     elif process_method == 1:
       process.direct_process(indices, progress)
     elif process_method == 2:
-      process.no_iterative_process(indices, progress)
+      process.no_iterative_process(indices)
+    progress.step(process.shape()[0])
     
     saved_folder = process.save(output_path, indices)
     
