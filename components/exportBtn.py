@@ -74,7 +74,7 @@ class ExportBtn(ttk.Button):
     finish_time = time.time()
     
     console.write(f"Bandas exportadas en {round(finish_time - init_time, 2)}seg. \n")
-    console.write(f"Guardando resultados en:\n{path}")
+    console.write(f"Resultados guardados en:\n{path}")
   
   def calculate(self, filepath, output_path):
     console = self.master.log_text
@@ -102,13 +102,13 @@ class ExportBtn(ttk.Button):
       process.direct_process(indices, progress)
     elif process_method == 2:
       process.no_iterative_process(indices)
-    progress.step(process.shape()[0])
+      progress.step(process.shape()[0])
     
     saved_folder = process.save(output_path, indices)
     
     finish_time = time.time()
     console.write(f"Índices calculados en {round(finish_time - init_time, 2)}seg. \n")
-    console.write(f"Guardando resultados en:\n{saved_folder}")
+    console.write(f"Resultados guardados en:\n{saved_folder}")
     
   
   
