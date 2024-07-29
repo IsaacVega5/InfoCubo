@@ -21,7 +21,7 @@ class ProcessSelector(ttk.LabelFrame):
     self.selector = ttk.Menubutton(self,
                                    bootstyle="primary",
                                    text=values[0][0],
-                                   width=10
+                                   width=15
                                   )
     self.selector.pack(side=ttk.RIGHT, padx=5, pady=5)
     
