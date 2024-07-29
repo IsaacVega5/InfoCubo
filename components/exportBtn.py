@@ -98,8 +98,10 @@ class ExportBtn(ttk.Button):
     
     if process_method == 0:
       process.ram_process(indices, progress)
-    else:
+    elif process_method == 1:
       process.context_process(indices, progress)
+    elif process_method == 2:
+      process.direct_process(indices, progress)
     
     saved_folder = process.save(output_path, indices)
     
