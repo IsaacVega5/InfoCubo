@@ -136,7 +136,7 @@ class Process:
     
     return folder
   
-  def context_process (self, indices, bar = None):
+  def direct_process (self, indices, bar = None):
     self.set_indices(indices, self.shape())
     
     for i in range(self.shape()[0]):
@@ -181,7 +181,7 @@ class Process:
       if bar is not None:
         bar.step(1)  
 
-  def direct_process(self, indices, bar = None):
+  def no_iterative_process(self, indices, bar = None):
     self.set_indices(indices, self.shape())
     
     img = self.raw_img
