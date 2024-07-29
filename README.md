@@ -19,6 +19,7 @@ Las imágenes se guardaran en la carpeta `c:/destino/result_nombre_imagen/`
 Actualmente hay dos métodos de procesamiento:
   1. **RAM**: Es el método más rápido, este método guarda la imagen en memoria RAM, por lo que consume más recursos, pero es más veloz.
   2. **Directo**: Es el método más lento, este método no guarda la imagen en memoria RAM, es más lento, pero consume menos recursos.
+  3. **No iterativo**: Es el método más preciso, este método no itera sobre los pixeles de la imagen, es el más preciso, pero consume más recursos.
   
 Recomiendo utilizar el método en base a la memoria RAM disponible y al peso de la imagen. Hay que considerar que si la imagen pesa 4gb el programa necesitará al rededor de 4.5gb de RAM para funcionar con el primer método.  
 
